@@ -1,0 +1,8 @@
+.board{
+    background: #170505;
+    display: grid;
+    grid-template-columns: repeat(21, 1fr);
+    grid-template-rows: repeat(21, fr);
+    min-height: 100vmin;
+    min-width: 100vmin;
+}

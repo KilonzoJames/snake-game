@@ -42,13 +42,10 @@ function Board() {
 
   return (
     <div 
-    style={{ position: 'relative', width: '1000px', height: '900px'}}
-    className='bg-black d-flex overflow-hidden text-white'
-    id='board'
-    tabIndex="0"
+    className='board'
     onKeyDown={moveDodger}>
      <Hunter ref={divRef}/>
-     <RandomDiv/>
+     {/* <RandomDiv/> */}
     </div>
   )
 }

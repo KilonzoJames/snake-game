@@ -1,10 +1,10 @@
-import React,{useState} from 'react'
+import React, { useState } from "react";
 
 function RandomDiv() {
-const [isVisible, setIsVisible] = useState(true);
-const [position, setPosition] = useState({ top: 0, left: 0  });
+  const [isVisible, setIsVisible] = useState(true);
+  const [position, setPosition] = useState({ top: 0, left: 0 });
 
-const handleClick = () => {
+  const handleClick = () => {
     if (isVisible) {
       const randomTop = Math.floor(Math.random() * window.innerHeight);
       const randomLeft = Math.floor(Math.random() * window.innerWidth);
@@ -17,21 +17,19 @@ const handleClick = () => {
     <div>
       {isVisible && (
         <div
-          className="point"
           onClick={handleClick}
+          className="bg-info"
           style={{
-            width: '40px',
-            height: '40px',
-            backgroundColor: 'green',
-            // position: 'fixed', // Add this to ensure the positioning works correctly
-            top: position.top, // Use the 'top' property
-            left: position.left, // Use the 'left' property
-            cursor: 'pointer', // Add a pointer cursor for better UX
+            width: "40px",
+            height: "40px",
+            top: "300px",
+            left: "200px",
+            cursor: "pointer",
           }}
         ></div>
       )}
     </div>
-  )
+  );
 }
 
-export default RandomDiv
+export default RandomDiv;

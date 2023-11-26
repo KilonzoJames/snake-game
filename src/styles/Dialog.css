@@ -1,0 +1,68 @@
+@import url("https://fonts.googleapis.com/css2?family=Skranji&display=swap");
+
+body {
+  height: 100vh;
+  width: 100vw; /* Use vw for viewport width */
+  background: linear-gradient(#113156, #070731);
+  margin: 0;
+  padding: 0;
+}
+.wrapper {
+  height: 100%;
+  width: 100%;
+  /* background-image: radial-gradient(#203462 4px, transparent 2px); */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.dialog {
+  width: 640px;
+  background: #a4363e;
+  padding: 40px;
+  border-radius: 30px;
+  box-shadow: 5px 6px 0px -2px #620d15,
+  0px 0px 180px 90px #0d2f66;
+}
+.content {
+  font-family: "Skranji", cursive;
+  /* background: radial-gradient(#fffbf3, #ffe19e); */
+  background: radial-gradient(circle, #fffbf3, #ffe19e, #a65f4c);
+  padding: 24px;
+  box-sizing: border-box;
+  border-radius: 20px 18px 20px 18px;
+  box-shadow: 5px 6px 0px -2px #113156;
+  text-align: center;
+}
+.content p {
+  color: #461417;
+  font-size: 56px;
+  padding: 40px;
+  margin: 0;
+}
+.buttons {
+  margin-top: 40px;
+  display: flex;
+  justify-content: normal;
+  align-items: center;
+  gap: 30px;
+}
+button {
+  border: 2px solid #49181e;
+  padding: 20px;
+  flex: 1;
+  border-radius: 20px;
+  font-family: "Skranji", cursive;
+  color: #fff;
+  text-shadow: 1px 2px 3px #000;
+  cursor: pointer;
+  box-shadow: 
+  0 0 0 4px #7e1522,
+  0 2px 0 3px #e66565,
+;
+}
+button.cancel {
+  background: linear-gradient(#ea7079, #891a1a);
+}
+button.confirm {
+  background: linear-gradient(#ced869, #536d1b);
+}
