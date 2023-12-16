@@ -1,0 +1,15 @@
+.form {
+    width: 400px;
+    height: 500px;
+    /* margin: 10% auto; */
+    border-radius: 15px;
+    background: #7c2d33;
+    box-shadow: 5px 6px 0px -2px #620d15,
+    0px 0px 180px 90px #0d2f66;
+    transition: 0.4s ease-in-out;
+  }
+  
+  .form:hover {
+    box-shadow: 1px 1px 1px rgba(0, 0, 0, 0.1);
+    scale: 0.99;
+  }

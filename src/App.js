@@ -1,17 +1,18 @@
-import "./styles/App.css";
-import Start from "./components/Start";
-import Game from "./components/Game";
-import Dialog from "./components/Dialog";
 import { Route, Routes } from "react-router-dom";
+import Start from "./components/Start";
+import Main from "./components/Main";
+import Dialog from "./components/Dialog";
+import "./styles/App.css";
+import "./styles/start.css";
 import "./styles/board.css";
-import "./styles/Dialog.css";
+import "./styles/dialog.css";
 
 function App() {
   return (
     <Routes>
       <Route exact path="/" element={<Start />} />
-      <Route path="/game" element={<Game />} />
-      <Route path="/con" element={<Dialog />} />
+      <Route path="/main" element={<Main />} />
+      <Route path="/dlg" element={<Dialog />} />
     </Routes>
   );
 }

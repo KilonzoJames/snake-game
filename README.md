@@ -1,70 +1,67 @@
-# Getting Started with Create React App
+# The Hunt - Snake Game
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+The Hunt is a classic Snake game that challenges players to navigate a snake through the game board, eat food, and grow longer without colliding with the walls or the snake's own tail.
 
-## Available Scripts
+![The Hunt](link_to_game_screenshot)
 
-In the project directory, you can run:
+## Table of Contents
 
-### `npm start`
+- [Features](#features)
+- [Getting Started](#getting-started)
+- [Controls](#controls)
+- [Gameplay](#gameplay)
+- [Built With](#built-with)
+- [License](#license)
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+## Features
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+- Classic Snake gameplay with a modern twist.
+- Responsive controls for an engaging user experience.
+- Score tracking to keep track of your progress.
+- Music toggle to enhance the gaming atmosphere.
+- Exit confirmation dialog to prevent accidental exits.
 
-### `npm test`
+## Getting Started
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+To play The Hunt on your local machine, follow these steps:
 
-### `npm run build`
+### Getting Started
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+1. **Clone the Repository:**
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+    ```bash
+    git clone https://github.com/kilonzojames/the-hunt
+    ```
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+### Controls
 
-### `npm run eject`
+- Use the arrow keys (Up, Down, Left, Right) to control the snake's movement.
+- Press "Enter" to confirm actions in dialog boxes.
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+### Gameplay
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+**Objective:**
+- Navigate the snake to eat the food and grow longer.
+- Avoid collisions with walls and the snake's tail.
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+**Scoring:**
+- Each food item consumed increases your score.
+- The longer the snake, the higher your score.
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+**Music:**
+- Toggle the music on/off for a customized gaming experience.
 
-## Learn More
+**Exiting the Game:**
+- Click the "Exit" button to open a confirmation dialog.
+- Confirm to exit the game or cancel to continue playing.
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+### Built With
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+- React
+- CSS3
+- Bootstrap
+- JavaScript
 
-### Code Splitting
+### License
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md) file for details.

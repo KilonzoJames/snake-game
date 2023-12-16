@@ -1,15 +1,14 @@
 @import url("https://fonts.googleapis.com/css2?family=Skranji&display=swap");
 
+html,
 body {
-  height: 100vh;
-  width: 100vw; /* Use vw for viewport width */
   background: linear-gradient(#113156, #070731);
   margin: 0;
   padding: 0;
 }
 .wrapper {
-  height: 100%;
-  width: 100%;
+  height: 100vh;
+  width: 100vw;  
   /* background-image: radial-gradient(#203462 4px, transparent 2px); */
   display: flex;
   align-items: center;
@@ -55,10 +54,7 @@ button {
   color: #fff;
   text-shadow: 1px 2px 3px #000;
   cursor: pointer;
-  box-shadow: 
-  0 0 0 4px #7e1522,
-  0 2px 0 3px #e66565,
-;
+  box-shadow: 0 0 0 4px #7e1522, 0 2px 0 3px #e66565;
 }
 button.cancel {
   background: linear-gradient(#ea7079, #891a1a);

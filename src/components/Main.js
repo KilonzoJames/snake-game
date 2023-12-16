@@ -2,7 +2,7 @@ import React from "react";
 import Header from "./Header";
 import Board from "./Board";
 
-function Game() {
+function Main() {
   return (
     <div className="d-flex flex-column">
       <Header />
@@ -11,4 +11,4 @@ function Game() {
   );
 }
 
-export default Game;
+export default Main;

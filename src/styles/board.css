@@ -1,8 +1,22 @@
-.board{
-    background: #170505;
-    display: grid;
-    grid-template-columns: repeat(21, 1fr);
-    grid-template-rows: repeat(21, fr);
-    min-height: 100vmin;
-    min-width: 100vmin;
+.board {
+  background: #170505;
+  display: grid;
+  grid-template-columns: repeat(21, 1fr);
+  grid-template-rows: repeat(21, 1fr);
+  min-height: 100vmin;
+  min-width: 100vmin;
+  border: 1px solid #f4eded;
+  gap: 1px;
+}
+.cell{
+  background: #fff;
+}
+.snake {
+  background: green;
+}
+.food{
+  background: red;
+}
+.snake_head{
+  background: black;
 }
