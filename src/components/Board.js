@@ -14,6 +14,8 @@ function Board() {
   const navigate = useNavigate();
   const score = useSelector((state) => state.score.value);
   const isSnakeMoving = useSelector((state) => state.score.isSnakeMoving);
+  let touchStartX = 0;
+  let touchStartY = 0;
 
   // Game State
   const [food, setFood] = useState(foodInitialPosition);
@@ -166,6 +168,37 @@ function Board() {
     }
   }
 
+  // Handle touch events for mobile swipes
+  const handleTouchStart = (e) => {
+    touchStartX = e.touches[0].clientX;
+    touchStartY = e.touches[0].clientY;
+  };
+
+  const handleTouchMove = (e) => {
+    e.preventDefault(); // Prevent default scrolling
+    const touchEndX = e.touches[0].clientX;
+    const touchEndY = e.touches[0].clientY;
+
+    const diffX = touchEndX - touchStartX;
+    const diffY = touchEndY - touchStartY;
+
+    if (Math.abs(diffX) > Math.abs(diffY)) {
+      // Horizontal swipe
+      if (diffX > 0 && direction !== "LEFT") {
+        setDirection("RIGHT"); // Change to right only if not currently moving left
+      } else if (diffX < 0 && direction !== "RIGHT") {
+        setDirection("LEFT"); // Change to left only if not currently moving right
+      }
+    } else {
+      // Vertical swipe
+      if (diffY > 0 && direction !== "UP") {
+        setDirection("DOWN"); // Change to down only if not currently moving up
+      } else if (diffY < 0 && direction !== "DOWN") {
+        setDirection("UP"); // Change to up only if not currently moving down
+      }
+    }
+  };
+
   // Handle Events and Effects
   useEffect(() => {
     let moveSnake;
@@ -179,6 +212,18 @@ function Board() {
   const toggleSnakeMovement = () => {
     dispatch(setIsSnakeMoving());
   };
+  // Handle Events and Effects
+  useEffect(() => {
+    document.addEventListener("keydown", updateDirection);
+    document.addEventListener("touchstart", handleTouchStart);
+    document.addEventListener("touchmove", handleTouchMove);
+
+    return () => {
+      document.removeEventListener("keydown", updateDirection);
+      document.removeEventListener("touchstart", handleTouchStart);
+      document.removeEventListener("touchmove", handleTouchMove);
+    };
+  }, []);
 
   useEffect(() => {
     document.addEventListener("keydown", updateDirection);
