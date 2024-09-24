@@ -4,7 +4,7 @@ import Board from "./Board";
 
 function Main() {
   return (
-    <div className="vh-100 d-flex flex-column">
+    <div className="min-vh-100 d-flex flex-column">
       <Header />
       <Board />
     </div>

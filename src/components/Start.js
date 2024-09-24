@@ -3,6 +3,7 @@ import { useNavigate } from "react-router-dom";
 
 function Start() {
   const navigate = useNavigate();
+
   function startGame() {
     navigate("/main");
   }

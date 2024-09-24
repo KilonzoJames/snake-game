@@ -1,23 +1,23 @@
 import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { decrement, increment } from "../redux/score";
+import { decrement, increment, setIsSnakeMoving } from "../redux/score";
 import Swal from "sweetalert2";
-import { totalGridSize, snakeInitialPosition } from "./constants";
+import {
+  totalGridSize,
+  snakeInitialPosition,
+  foodInitialPosition,
+} from "./constants";
 import { useNavigate } from "react-router-dom";
 
 function Board() {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const score = useSelector((state) => state.score.value);
-  const [isSnakeMoving, setIsSnakeMoving] = useState(true);
+  const isSnakeMoving = useSelector((state) => state.score.isSnakeMoving);
 
   // Game State
-  const [food, setFood] = useState({
-    x: 5,
-    y: 5,
-  });
+  const [food, setFood] = useState(foodInitialPosition);
   const [snake, setSnake] = useState(snakeInitialPosition);
-
   const [direction, setDirection] = useState("LEFT");
 
   function startGame() {
@@ -28,13 +28,11 @@ function Board() {
     dispatch(decrement());
 
     // Start snake movement
-    setIsSnakeMoving(true); // Turn snake movement on
+    dispatch(setIsSnakeMoving()); // Turn snake movement on
 
     // Optionally reset other game components
-    setFood({
-      x: 5,
-      y: 5,
-    });
+    setFood(foodInitialPosition);
+    renderFood(); // Add this line to place food initially
     console.log("Game restarted!");
   }
 
@@ -91,20 +89,14 @@ function Board() {
       color: "green",
       confirmButtonText: "Play Again.",
       cancelButtonText: "Exit Game!",
-      cancelButtonColor: 'Crimson',
-      confirmButtonColor: 'Green',
+      cancelButtonColor: "Crimson",
+      confirmButtonColor: "Green",
       showCancelButton: true,
       background: "#000", // Optional: give the alert a custom background
     }).then((result) => {
-      if (result.isConfirmed) {
-        // Restart the game if "Play Again" is clicked
-        startGame();
-      } else {
-        // Perform any additional cleanup or exit actions
-        navigate("/");
-      }
+      if (result.isConfirmed) startGame();
+      else navigate("/");
     });
-    dispatch(decrement());
   }
   function updateGame() {
     // Checking For Game Over
@@ -185,7 +177,7 @@ function Board() {
     return () => clearInterval(moveSnake);
   }, [isSnakeMoving, updateDirection]);
   const toggleSnakeMovement = () => {
-    setIsSnakeMoving(!isSnakeMoving);
+    dispatch(setIsSnakeMoving());
   };
 
   useEffect(() => {
