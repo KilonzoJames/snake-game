@@ -31,11 +31,13 @@ To play The Hunt on your local machine, follow these steps:
 
     ```bash
     git clone https://github.com/kilonzojames/the-hunt
+    ``` 
+    ```Online
+    https://the-hunt.onrender.com/
     ```
-
 ### Controls
 
-- Use the arrow keys (Up, Down, Left, Right) to control the snake's movement.
+- Use the arrow (Up, Down, Left, Right) keyboard keys on your laptop or desktop to control the snake's movement.
 - Press "Enter" to confirm actions in dialog boxes.
 
 ### Gameplay
