@@ -9,10 +9,10 @@ function Dialog({ onConfirm, onCancel }) {
         </div>
         <div className="buttons">
           <button type="button" className="confirm" onClick={onConfirm}>
-            Confirm
+            Continue
           </button>
           <button type="button" className="cancel" onClick={onCancel}>
-            Cancel
+            Exit
           </button>
         </div>
       </div>

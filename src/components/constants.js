@@ -1,6 +1,6 @@
 export let totalGridSize = 21;
 
-export let snakeIntialPosition = [
+export let snakeInitialPosition = [
   {
     x: (totalGridSize - 1) / 2,
     y: (totalGridSize - 1) / 2,
