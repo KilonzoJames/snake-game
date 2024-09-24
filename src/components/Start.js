@@ -1,11 +1,18 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
+import { useDispatch } from "react-redux";
+import { resetPosition, renderFood } from "../redux/position";
+import { setIsSnakeMoving } from "../redux/score";
 
 function Start() {
   const navigate = useNavigate();
+  const dispatch = useDispatch();
 
   function startGame() {
     navigate("/main");
+    dispatch(resetPosition());
+    dispatch(setIsSnakeMoving(true));
+    dispatch(renderFood())
   }
 
   return (

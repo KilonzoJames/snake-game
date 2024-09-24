@@ -2,29 +2,27 @@ import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { decrement, increment, setIsSnakeMoving } from "../redux/score";
 import Swal from "sweetalert2";
-import {
-  totalGridSize,
-  snakeInitialPosition,
-  foodInitialPosition,
-} from "./constants";
+import { totalGridSize } from "./constants";
 import { useNavigate } from "react-router-dom";
+import { setSnake, resetPosition, renderFood } from "../redux/position";
 
 function Board() {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const score = useSelector((state) => state.score.value);
   const isSnakeMoving = useSelector((state) => state.score.isSnakeMoving);
+  const position = useSelector((state) => state.position);
+  const { food, snake } = position;
+
   let touchStartX = 0;
   let touchStartY = 0;
 
   // Game State
-  const [food, setFood] = useState(foodInitialPosition);
-  const [snake, setSnake] = useState(snakeInitialPosition);
   const [direction, setDirection] = useState("LEFT");
 
   function startGame() {
     // Reset snake to its initial position
-    setSnake(snakeInitialPosition);
+    dispatch(resetPosition());
 
     // Reset other game variables (like score, speed, etc.)
     dispatch(decrement());
@@ -33,8 +31,7 @@ function Board() {
     dispatch(setIsSnakeMoving()); // Turn snake movement on
 
     // Optionally reset other game components
-    setFood(foodInitialPosition);
-    renderFood(); // Add this line to place food initially
+    dispatch(renderFood()); // Add this line to place food initially
     console.log("Game restarted!");
   }
 
@@ -71,19 +68,10 @@ function Board() {
 
     return cellArray;
   }
-  function renderFood() {
-    let randomX = Math.floor(Math.random() * totalGridSize);
-    let randomY = Math.floor(Math.random() * totalGridSize);
-
-    setFood({
-      x: randomX,
-      y: randomY,
-    });
-  }
 
   function gameOver() {
-    setSnake(snakeInitialPosition);
-    toggleSnakeMovement();
+    dispatch(resetPosition());
+    dispatch(setIsSnakeMoving());
     Swal.fire({
       title: "Game Over!",
       text: `Your final score is: ${score}`,
@@ -139,12 +127,12 @@ function Board() {
     if (newSnake[0].x === food.x && newSnake[0].y === food.y) {
       // Ate Food
       dispatch(increment()); // Dispatch your action
-      renderFood();
+      dispatch(renderFood());
     } else {
       newSnake.pop();
     }
 
-    setSnake(newSnake);
+    dispatch(setSnake(newSnake));
   }
 
   function updateDirection(e) {
@@ -209,9 +197,7 @@ function Board() {
 
     return () => clearInterval(moveSnake);
   }, [isSnakeMoving, updateDirection]);
-  const toggleSnakeMovement = () => {
-    dispatch(setIsSnakeMoving());
-  };
+
   // Handle Events and Effects
   useEffect(() => {
     document.addEventListener("keydown", updateDirection);
