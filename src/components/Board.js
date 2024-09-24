@@ -88,9 +88,11 @@ function Board() {
       title: "Game Over!",
       text: `Your final score is: ${score}`,
       icon: "error", // More visual feedback for game over
-      color: "red",
-      confirmButtonText: "Play Again",
-      cancelButtonText: "Exit",
+      color: "green",
+      confirmButtonText: "Play Again.",
+      cancelButtonText: "Exit Game!",
+      cancelButtonColor: 'Crimson',
+      confirmButtonColor: 'Green',
       showCancelButton: true,
       background: "#000", // Optional: give the alert a custom background
     }).then((result) => {
