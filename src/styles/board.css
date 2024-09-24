@@ -8,7 +8,6 @@
   flex-grow: 1; /* Allows it to grow within the flex container */
 }
 
-
 .cell{
   /* background: transparent; */
   /* Semi-transparent cells */

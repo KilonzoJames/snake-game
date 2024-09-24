@@ -1,11 +1,9 @@
 .form {
-    width: 400px;
+    width: 450px;
     height: 500px;
-    /* margin: 10% auto; */
-    border-radius: 15px;
+    border-radius: 35px;
     background: #7c2d33;
-    box-shadow: 5px 6px 0px -2px #620d15,
-    0px 0px 180px 90px #0d2f66;
+    box-shadow: 0 4px 30px 0 rgba(245, 208, 254, 0.5);
     transition: 0.4s ease-in-out;
   }
   
