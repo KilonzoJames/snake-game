@@ -4,20 +4,23 @@
   grid-template-columns: repeat(21, 1fr);
   grid-template-rows: repeat(21, 1fr);
   height: 100%; /* This will ensure it takes up the remaining space */
-  width: 100%;  /* Adjust width within the parent container */
+  width: 100%; /* Adjust width within the parent container */
   flex-grow: 1; /* Allows it to grow within the flex container */
+  gap: 1px;
 }
 
-.cell{
+.cell {
+  background-color: rgb(92, 166, 232);
+  border-radius: 25%;
   /* background: transparent; */
   /* Semi-transparent cells */
 }
 .snake {
-  background: green;
+  background: #fff;
 }
-.food{
+.food {
   background: red;
 }
-.snake_head{
+.snake_head {
   background: black;
 }

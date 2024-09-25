@@ -45,7 +45,7 @@ function Header() {
   return (
     <>
       <div className="d-flex flex-wrap  justify-content-between align-items-center fs-4 fw-bolder">
-        <div className="bg-info text-white p-2" onClick={toggleMusic}>
+        <div className="bg-info text-white p-2 rounded-4" onClick={toggleMusic}>
           {musicPlaying ? "Pause Music" : "Play Music"}
         </div>
         {/* Audio element */}
@@ -54,9 +54,9 @@ function Header() {
         <div className="text-info fs-1">Rock Dodger</div>
 
         <div className="d-flex flex-column  text-danger p-2">
-          <span className="bg-info">Game Points: {value}</span>
+          <span>SCORE : {value}</span>
           <span
-            className="d-flex justify-content-center text-info bg-secondary"
+            className="d-flex justify-content-center text-light rounded-4 bg-danger"
             onClick={handleExit}
           >
             Exit
