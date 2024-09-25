@@ -140,16 +140,28 @@ function Board() {
 
     switch (key) {
       case "ArrowUp":
-        if (direction !== "DOWN") setDirection("UP");
+        if (direction !== "DOWN") {
+          setDirection("UP");
+          console.log("Direction set to UP");
+        }
         break;
       case "ArrowDown":
-        if (direction !== "UP") setDirection("DOWN");
+        if (direction !== "UP") {
+          setDirection("DOWN");
+          console.log("Direction set to DOWN");
+        }
         break;
       case "ArrowLeft":
-        if (direction !== "RIGHT") setDirection("LEFT");
+        if (direction !== "RIGHT") {
+          setDirection("LEFT");
+          console.log("Direction set to LEFT");
+        }
         break;
       case "ArrowRight":
-        if (direction !== "LEFT") setDirection("RIGHT");
+        if (direction !== "LEFT") {
+          setDirection("RIGHT");
+          console.log("Direction set to RIGHT");
+        }
         break;
       default:
         return;
@@ -163,26 +175,37 @@ function Board() {
   };
 
   const handleTouchMove = (e) => {
-    e.preventDefault(); // Prevent default scrolling
+    // e.preventDefault(); // Prevent default scrolling
+
     const touchEndX = e.touches[0].clientX;
     const touchEndY = e.touches[0].clientY;
 
-    const diffX = touchEndX - touchStartX;
-    const diffY = touchEndY - touchStartY;
+    // Calculate the difference between touch start and end
+    const deltaX = touchEndX - touchStartX;
+    const deltaY = touchEndY - touchStartY;
 
-    if (Math.abs(diffX) > Math.abs(diffY)) {
+    // Determine the swipe direction based on the difference
+    if (Math.abs(deltaX) > Math.abs(deltaY)) {
       // Horizontal swipe
-      if (diffX > 0 && direction !== "LEFT") {
-        setDirection("RIGHT"); // Change to right only if not currently moving left
-      } else if (diffX < 0 && direction !== "RIGHT") {
-        setDirection("LEFT"); // Change to left only if not currently moving right
+      if (deltaX > 0) {
+        // Right swipe
+        if (direction !== "LEFT") setDirection("RIGHT");
+        console.log("Direction set to RIGHT");
+      } else {
+        // Left swipe
+        if (direction !== "RIGHT") setDirection("LEFT");
+        console.log("Direction set to LEFT");
       }
     } else {
       // Vertical swipe
-      if (diffY > 0 && direction !== "UP") {
-        setDirection("DOWN"); // Change to down only if not currently moving up
-      } else if (diffY < 0 && direction !== "DOWN") {
-        setDirection("UP"); // Change to up only if not currently moving down
+      if (deltaY > 0) {
+        // Down swipe
+        if (direction !== "UP") setDirection("DOWN");
+        console.log("Direction set to DOWN");
+      } else {
+        // Up swipe
+        if (direction !== "DOWN") setDirection("UP");
+        console.log("Direction set to UP");
       }
     }
   };
@@ -209,13 +232,8 @@ function Board() {
       document.removeEventListener("touchstart", handleTouchStart);
       document.removeEventListener("touchmove", handleTouchMove);
     };
-  }, []);
+  }, [direction]); // Include direction to keep updated
 
-  useEffect(() => {
-    document.addEventListener("keydown", updateDirection);
-
-    return () => document.removeEventListener("keydown", updateDirection);
-  });
   return <div className="board">{renderBoard()}</div>;
 }
 
