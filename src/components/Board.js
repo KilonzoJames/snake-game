@@ -16,6 +16,7 @@ function Board() {
 
   let touchStartX = 0;
   let touchStartY = 0;
+  let threshold = 30;
 
   // Game State
   const [direction, setDirection] = useState("LEFT");
@@ -170,13 +171,12 @@ function Board() {
 
   // Handle touch events for mobile swipes
   const handleTouchStart = (e) => {
+    e.preventDefault(); // Prevent default scrolling
     touchStartX = e.touches[0].clientX;
     touchStartY = e.touches[0].clientY;
   };
 
   const handleTouchMove = (e) => {
-    // e.preventDefault(); // Prevent default scrolling
-
     const touchEndX = e.touches[0].clientX;
     const touchEndY = e.touches[0].clientY;
 
@@ -184,28 +184,27 @@ function Board() {
     const deltaX = touchEndX - touchStartX;
     const deltaY = touchEndY - touchStartY;
 
-    // Determine the swipe direction based on the difference
-    if (Math.abs(deltaX) > Math.abs(deltaY)) {
-      // Horizontal swipe
-      if (deltaX > 0) {
-        // Right swipe
-        if (direction !== "LEFT") setDirection("RIGHT");
-        console.log("Direction set to RIGHT");
+    // Determine if the swipe exceeds the threshold
+    if (Math.abs(deltaX) > threshold || Math.abs(deltaY) > threshold) {
+      // Determine the swipe direction based on the difference
+      if (Math.abs(deltaX) > Math.abs(deltaY)) {
+        // Horizontal swipe
+        if (deltaX > 0) {
+          setDirection("RIGHT");
+          console.log("Direction set to RIGHT");
+        } else {
+          setDirection("LEFT");
+          console.log("Direction set to LEFT");
+        }
       } else {
-        // Left swipe
-        if (direction !== "RIGHT") setDirection("LEFT");
-        console.log("Direction set to LEFT");
-      }
-    } else {
-      // Vertical swipe
-      if (deltaY > 0) {
-        // Down swipe
-        if (direction !== "UP") setDirection("DOWN");
-        console.log("Direction set to DOWN");
-      } else {
-        // Up swipe
-        if (direction !== "DOWN") setDirection("UP");
-        console.log("Direction set to UP");
+        // Vertical swipe
+        if (deltaY > 0) {
+          setDirection("DOWN");
+          console.log("Direction set to DOWN");
+        } else {
+          setDirection("UP");
+          console.log("Direction set to UP");
+        }
       }
     }
   };
@@ -223,16 +222,21 @@ function Board() {
 
   // Handle Events and Effects
   useEffect(() => {
-    document.addEventListener("keydown", updateDirection);
     document.addEventListener("touchstart", handleTouchStart);
     document.addEventListener("touchmove", handleTouchMove);
 
     return () => {
-      document.removeEventListener("keydown", updateDirection);
       document.removeEventListener("touchstart", handleTouchStart);
       document.removeEventListener("touchmove", handleTouchMove);
     };
-  }, [direction]); // Include direction to keep updated
+  }, []); // Include direction to keep updated
+
+  useEffect(() => {
+    document.addEventListener("keydown", updateDirection);
+    return () => {
+      document.removeEventListener("keydown", updateDirection);
+    };
+  }, [direction]);
 
   return <div className="board">{renderBoard()}</div>;
 }

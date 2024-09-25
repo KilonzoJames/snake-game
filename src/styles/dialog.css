@@ -2,7 +2,8 @@
 
 html,
 body {
-  background: linear-gradient(#113156, #070731);
+  /* background: linear-gradient(#113156, #070731); */
+  background-image: url("https://img.freepik.com/premium-photo/green-black-abstract-maze-pattern_1150025-31889.jpg?w=826");
   margin: 0;
   padding: 0;
 }
