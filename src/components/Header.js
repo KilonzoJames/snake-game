@@ -51,7 +51,7 @@ function Header() {
         {/* Audio element */}
         <audio ref={audioRef} src={backgroundMusic} loop />
         {/* Other elements... */}
-        <div className="text-info fs-1">Rock Dodger</div>
+        <div className="text-info fs-1 Shojumaru">Rock Dodger</div>
 
         <div className="d-flex flex-column  text-danger p-2">
           <span>SCORE : {value}</span>
