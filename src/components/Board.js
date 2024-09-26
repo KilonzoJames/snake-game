@@ -171,12 +171,13 @@ function Board() {
 
   // Handle touch events for mobile swipes
   const handleTouchStart = (e) => {
-    e.preventDefault(); // Prevent default scrolling
+    e.preventDefault(); // Prevent text selection or touch-triggered CSS hover effects.
     touchStartX = e.touches[0].clientX;
     touchStartY = e.touches[0].clientY;
   };
 
   const handleTouchMove = (e) => {
+    e.preventDefault(); // Prevent default scrolling
     const touchEndX = e.touches[0].clientX;
     const touchEndY = e.touches[0].clientY;
 
@@ -222,12 +223,16 @@ function Board() {
 
   // Handle Events and Effects
   useEffect(() => {
-    document.addEventListener("touchstart", handleTouchStart);
-    document.addEventListener("touchmove", handleTouchMove);
+    const boardElement = document.getElementById("board");
+
+    boardElement.addEventListener("touchstart", handleTouchStart);
+    boardElement.addEventListener("touchmove", handleTouchMove, {
+      passive: false,
+    });
 
     return () => {
-      document.removeEventListener("touchstart", handleTouchStart);
-      document.removeEventListener("touchmove", handleTouchMove);
+      boardElement.removeEventListener("touchstart", handleTouchStart);
+      boardElement.removeEventListener("touchmove", handleTouchMove);
     };
   }, []); // Include direction to keep updated
 
@@ -238,7 +243,7 @@ function Board() {
     };
   }, [direction]);
 
-  return <div className="board">{renderBoard()}</div>;
+  return <div className="board" id="board">{renderBoard()}</div>;
 }
 
 export default Board;
