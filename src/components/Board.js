@@ -243,7 +243,13 @@ function Board() {
     };
   }, [direction]);
 
-  return <div className="board" id="board">{renderBoard()}</div>;
+  return (
+    <div className="container">
+      <div className="board" id="board">
+        {renderBoard()}
+      </div>
+    </div>
+  );
 }
 
 export default Board;
