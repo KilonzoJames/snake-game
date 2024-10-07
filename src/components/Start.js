@@ -11,7 +11,7 @@ function Start() {
   function startGame() {
     navigate("/main");
     dispatch(resetPosition());
-    dispatch(setIsSnakeMoving());
+    dispatch(setIsSnakeMoving(true));
     dispatch(renderFood())
   }
 

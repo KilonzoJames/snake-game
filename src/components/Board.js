@@ -29,7 +29,7 @@ function Board() {
     dispatch(decrement());
 
     // Start snake movement
-    dispatch(setIsSnakeMoving()); // Turn snake movement on
+    dispatch(setIsSnakeMoving(true)); // Turn snake movement on
 
     // Optionally reset other game components
     dispatch(renderFood()); // Add this line to place food initially
@@ -72,7 +72,7 @@ function Board() {
 
   function gameOver() {
     dispatch(resetPosition());
-    dispatch(setIsSnakeMoving());
+    dispatch(setIsSnakeMoving(false));
     Swal.fire({
       title: "Game Over!",
       text: `Your final score is: ${score}`,

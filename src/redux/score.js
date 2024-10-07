@@ -23,8 +23,8 @@ const scoreSlice = createSlice({
     setMusicPlaying: (state) => {
       state.musicPlaying = !state.musicPlaying; // Correctly toggle the musicPlaying property
     },
-    setIsSnakeMoving: (state) => {
-      state.isSnakeMoving = !state.isSnakeMoving; // Correctly toggle the isSnakeMoving property
+    setIsSnakeMoving: (state, action) => {
+      state.isSnakeMoving = action.payload; // Set the isSnakeMoving property directly
     },
   },
 });
